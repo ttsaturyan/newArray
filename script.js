@@ -5,17 +5,25 @@ class newArray {
             this[key] = arguments[key];
             key++;
         };
-        this.length = key;
+        Object.defineProperty(
+            this,
+            'length', {
+                configurable: false,
+                writable: true,
+                value: key,
+                enumerable: false
+            }
+        )
     };
 
-    forof(callback) {
-        for (let key in this) {
-            if (this.hasOwnProperty(key)) {
-                const element = this[key];
-                callback(element);
-            };
-        };
-    };
+    // forof(callback) {
+    //     for (let key in this) {
+    //         if (this.hasOwnProperty(key)) {
+    //             const element = this[key];
+    //             callback(element);
+    //         };
+    //     };
+    // };
 
     forEach(callback) {
         for (let key in this) {
@@ -51,7 +59,7 @@ class newArray {
         --this.length;
         while (element <= this.length) {
             this[key] = this[element++];
-            key++
+            key++;
         }
         delete this[key];
         return parametr;
@@ -74,11 +82,13 @@ const arr = new newArray(true, 'dfdf');
 const arr1 = new newArray(true, 'dfdf');
 
 
-array.push(15000000, 60, 15)
-console.log(array.shift())
-array.pop()
-array.forEach(e => {
-    console.log(e)
-})
-array.concat(arr1, arr)
+// array.push(15000000, 60, 15)
+// console.log(array.shift())
+// array.pop()
+// array.forEach(e => {
+//     console.log(e)
+// })
+// array.concat(arr1, arr)
 console.log(array)
+
+const array125 = []
