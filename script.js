@@ -27,12 +27,15 @@ class newArray {
 
         for (let key in this) {
             if (this.hasOwnProperty(key)) {
-                let currentValue = this[key];
+                let Value = this[key];
                 let index = +key;
                 let array = this;
-                return callback(currentValue, index, array);
+                if (callback(Value, index, array !== true)) {
+                    return false
+                }
             };
         };
+        return true
     };
 
     fill(value, start, end) {
@@ -243,7 +246,7 @@ class newArray {
 
 const arr = new newArray(2, 2, 2, 2);
 const arr1 = new newArray(1, 1, 1, 1, arr);
-const array = new newArray(12, 15, 65, 100, 200, 100, 125, 1600, arr1, arr);
+const array = new newArray(12, 15, 11, 100, 200, 100, 125, 1600, arr1, arr);
 const arr2 = new newArray();
 const array125 = [2.15, 21, 154, 300, 126, 259, [2, 2, [1, 1, 1, ]],
     [3, 3, 3]
